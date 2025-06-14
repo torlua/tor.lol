@@ -76,6 +76,7 @@
       width: 0;
       animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
       text-shadow: 0 0 15px #fff;
+      color: white;
     }
     @keyframes typing {
       from { width: 0 }
@@ -101,6 +102,7 @@
       fill: white;
       width: 100%;
       height: 100%;
+      shape-rendering: crispEdges; /* sharp blocky edges */
     }
     .badge:hover::after {
       content: attr(data-label);
@@ -140,6 +142,7 @@
       fill: white;
       width: 100%;
       height: 100%;
+      shape-rendering: crispEdges; /* sharp edges for blocky look */
     }
     .link-icon:hover::after {
       content: attr(data-label);
@@ -189,13 +192,279 @@
 
   <!-- Background video -->
   <video autoplay muted loop id="bg-video" playsinline>
-    <source src="https://www.youtube.com/watch?v=JSiWawTtPRU&list=RDJSiWawTtPRU&start_radio=1" />
-    <source src="https://www.youtube.com/watch?v=JSiWawTtPRU&list=RDJSiWawTtPRU&start_radio=1" />
+    <!-- Direct mp4 link (not from YouTube) -->
+    <source src="https://cdn.discordapp.com/attachments/1120711931670577203/1381668589924388974/video_720p.mp4" type="video/mp4" />
     Sorry, your browser does not support the video tag.
   </video>
 
   <audio id="bg-music" loop>
-    <source src="https://www.youtube.com/watch?v=6U0jM2iXq3U&list=RD6U0jM2iXq3U&start_radio=1" type="audio/mpeg" />
+    <source src="https://cdn.discordapp.com/attachments/1120711931670577203/1381785480658354504/lofi_chill_music.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="vhs-overlay"></div>
+
+  <div class="container" id="profile-container">
+    <img class="profile-pic" src="https://i.pinimg.com/736x/66/ca/2c/66ca2cbfc9bf7a4ee43c66ead8f81966.jpg" alt="Profile Picture" />
+    <div class="name">@dada</div>
+
+    <div class="badges">
+      <div class="badge" data-label="Bug Hunter" title="Bug Hunter">
+        <svg viewBox="0 0 24 24"><path d="M12 2C11.4477 2 11 2.44772 11 3V4H9V3C9 2.44772 8.55228 2 8 2C7.44772 2 7 2.44772 7 3V4H6C5.44772 4 5 4.44772 5 5V8H19V5C19 4.44772 18.5523 4 18 4H17V3C17 2.44772 16.5523 2 16 2C15.4477 2 15 2.44772 15 3V4H13V3C13 2.44772 12.5523 2 12 2ZM7 10V16H9V18H15V16H17V10H7Z"/></svg>
+      </div>
+      <div class="badge" data-label="Developer" title="Developer">
+        <svg viewBox="0 0 24 24"><path d="M3 5H21V7H3V5ZM3 17H21V19H3V17ZM8 10L5 13L8 16V10ZM16 10V16L19 13L16 10Z"/></svg>
+      </div>
+      <div class="badge" data-label="Owner" title="Owner">
+        <svg viewBox="0 0 24 24"><path d="M4 17L2 7L6 13L10 7L14 13L18 7L22 17H4Z"/></svg>
+      </div>
+      <div class="badge" data-label="Booster" title="Booster">
+        <svg viewBox="0 0 24 24"><path d="M7 2L3 14H12L9 22L17 10H8L11 2H7Z"/></svg>
+      </div>
+      <div class="badge" data-label="Premium" title="Premium">
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.62L12 2L9.19 8.63L2 9.24L7.45 13.97L5.82 21L12 17.27Z"/></svg>
+      </div>
+      <div class="badge" data-label="Donater" title="Donater">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 6.42 3.42 5 5.5 5C6.74 5 7.91 5.81 8.44 7.09H15.56C16.09 5.81 17.26 5 18.5 5C20.58 5 22 6.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"/></svg>
+      </div>
+    </div>
+
+    <div class="links">
+      <a class="link-icon" href="https://discord.gg/yourserver" target="_blank" data-label="Discord" title="Discord">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM16.5 13C15.67 13 15 12.33 15 11.5C15 10.67 15.67 10 16.5 10C17.33 10 18 10.67 18 11.5C18 12.33 17.33 13 16.5 13ZM7.5 13C6.67 13 6 12.33 6 11.5C6 10.67 6.67 10 7.5 10C8.33 10 9 10.67 9 11.5C9 12.33 8.33 13 7.5 13Z"/></svg>
+      </a>
+      <a class="link-icon" href="https://www.roblox.com/games/yourgame" target="_blank" data-label="Roblox" title="Roblox">
+        <svg viewBox="0 0 24 24"><path d="M12 2L3 7V17L12 22L21 17V7L12 2ZM12 19.19L6.5 15.59V8.41L12 12.01L17.5 8.41V15.59L12 19.19Z"/></svg>
+      </a>
+      <a class="link-icon" href="https://youtube.com/@yourchannel" target="_blank" data-label="YouTube" title="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M10 15L15 12L10 9V15ZM21.8 7.2C21.9 7.8 22 8.4 22 9C22 15 21.8 15.6 21.8 15.6C21.7 16.2 21.3 16.6 20.7 16.7C19.2 17 12 17 12 17C12 17 4.8 17 3.3 16.7C2.7 16.6 2.3 16.2 2.2 15.6C2.2 15.6 2 15 2 9C2 8.4 2.1 7.8 2.2 7.2C2.3 6.6 2.7 6.2 3.3 6.1C4.8 5.8 12 5.8 12 5.8C12 5.8 19.2 5.8 20.7 6.1C21.3 6.2 21.7 6.6 21.8 7.2Z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const torScreen = document.getElementById('tor-screen');
+    const profile = document.getElementById('profile-container');
+    const audio = document.getElementById('bg-music');
+
+    torScreen.addEventListener('click', () => {
+      torScreen.style.opacity = '0';
+      setTimeout(() => {
+        torScreen.style.display = 'none';
+        profile.style.opacity = '1';
+        profile.style.pointerEvents = 'auto';
+
+        // Unmute and play audio on user interaction
+        audio.muted = false;
+        audio.play().catch(() => {
+          console.log('Audio playback prevented by browser.');
+        });
+      }, 500);
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <title>@dada | Links</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      background: black;
+      font-family: 'Press Start 2P', monospace;
+      color: white;
+      overflow: hidden;
+      text-shadow: 0 0 10px white;
+    }
+    #bg-video {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -2;
+      filter: brightness(0.4) blur(2px);
+      pointer-events: none;
+    }
+    .vhs-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.03),
+        rgba(255, 255, 255, 0.03) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+      animation: flicker 0.2s infinite;
+      pointer-events: none;
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    .container {
+      z-index: 1;
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid white;
+      object-fit: cover;
+      filter: drop-shadow(0 0 8px white);
+    }
+    .name {
+      font-size: 18px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid white;
+      width: 0;
+      animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+      text-shadow: 0 0 15px #fff;
+      color: white;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 14ch }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+    .badges {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .badge {
+      position: relative;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      filter: drop-shadow(0 0 3px white);
+    }
+    .badge svg {
+      fill: white;
+      width: 100%;
+      height: 100%;
+      shape-rendering: crispEdges; /* sharp blocky edges */
+    }
+    .badge:hover::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.85);
+      color: white;
+      padding: 4px 8px;
+      border: 1px solid white;
+      border-radius: 4px;
+      font-size: 10px;
+      white-space: nowrap;
+      opacity: 1;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 10;
+    }
+    .badge::after {
+      opacity: 0;
+    }
+    .links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .link-icon {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      filter: drop-shadow(0 0 3px white);
+    }
+    .link-icon svg {
+      fill: white;
+      width: 100%;
+      height: 100%;
+      shape-rendering: crispEdges; /* sharp edges for blocky look */
+    }
+    .link-icon:hover::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.85);
+      color: white;
+      padding: 4px 8px;
+      border: 1px solid white;
+      border-radius: 4px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 1;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 10;
+    }
+    .link-icon::after {
+      opacity: 0;
+    }
+    #tor-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      color: white;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 64px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      z-index: 9999;
+      text-shadow: 0 0 15px white;
+      letter-spacing: 0.2em;
+      transition: opacity 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="tor-screen">TOR</div>
+
+  <!-- Background video -->
+  <video autoplay muted loop id="bg-video" playsinline>
+    <!-- Direct mp4 link (not from YouTube) -->
+    <source src="https://cdn.discordapp.com/attachments/1120711931670577203/1381668589924388974/video_720p.mp4" type="video/mp4" />
+    Sorry, your browser does not support the video tag.
+  </video>
+
+  <audio id="bg-music" loop>
+    <source src="https://cdn.discordapp.com/attachments/1120711931670577203/1381785480658354504/lofi_chill_music.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
 
