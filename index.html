@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <title>@dada | Links</title>
@@ -16,8 +16,6 @@
       overflow: hidden;
       text-shadow: 0 0 10px white;
     }
-
-    /* Background video (MP4) filling screen */
     #bg-video {
       position: fixed;
       top: 0; left: 0;
@@ -28,7 +26,6 @@
       filter: brightness(0.4) blur(2px);
       pointer-events: none;
     }
-
     .vhs-overlay {
       position: fixed;
       top: 0; left: 0;
@@ -49,7 +46,6 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.6; }
     }
-
     .container {
       z-index: 1;
       position: relative;
@@ -60,10 +56,10 @@
       align-items: center;
       text-align: center;
       gap: 20px;
-      opacity: 1;
+      opacity: 0;
+      pointer-events: none;
       transition: opacity 0.6s ease;
     }
-
     .profile-pic {
       width: 120px;
       height: 120px;
@@ -72,7 +68,6 @@
       object-fit: cover;
       filter: drop-shadow(0 0 8px white);
     }
-
     .name {
       font-size: 18px;
       white-space: nowrap;
@@ -89,7 +84,6 @@
     @keyframes blink {
       50% { border-color: transparent }
     }
-
     .badges {
       display: flex;
       gap: 15px;
@@ -129,7 +123,6 @@
     .badge::after {
       opacity: 0;
     }
-
     .links {
       display: flex;
       gap: 24px;
@@ -169,7 +162,6 @@
     .link-icon::after {
       opacity: 0;
     }
-
     #tor-screen {
       position: fixed;
       top: 0; left: 0;
@@ -195,41 +187,41 @@
 
   <div id="tor-screen">TOR</div>
 
-  <!-- Background video - REPLACE src with your direct mp4 link -->
+  <!-- Background video -->
   <video autoplay muted loop id="bg-video" playsinline>
-    <source src="https://cdn.discordapp.com/attachments/1120711931670577203/1381668589924388974/background.mp4" type="video/mp4" />
-    <!-- fallback -->
+    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+    Sorry, your browser does not support the video tag.
   </video>
+
+  <audio id="bg-music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/17/audio_1819f5e417.mp3?filename=retro-wave-11227.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
 
   <div class="vhs-overlay"></div>
 
-  <div class="container" id="profile-container" style="opacity:0; pointer-events:none;">
+  <div class="container" id="profile-container">
     <img class="profile-pic" src="https://i.pinimg.com/736x/66/ca/2c/66ca2cbfc9bf7a4ee43c66ead8f81966.jpg" alt="Profile Picture" />
     <div class="name">@dada</div>
 
     <div class="badges">
       <div class="badge" data-label="Bug Hunter" title="Bug Hunter">
-        <!-- Bug icon - blocky white style -->
         <svg viewBox="0 0 24 24"><path d="M12 2C11.4477 2 11 2.44772 11 3V4H9V3C9 2.44772 8.55228 2 8 2C7.44772 2 7 2.44772 7 3V4H6C5.44772 4 5 4.44772 5 5V8H19V5C19 4.44772 18.5523 4 18 4H17V3C17 2.44772 16.5523 2 16 2C15.4477 2 15 2.44772 15 3V4H13V3C13 2.44772 12.5523 2 12 2ZM7 10V16H9V18H15V16H17V10H7Z"/></svg>
       </div>
       <div class="badge" data-label="Developer" title="Developer">
-        <!-- Developer icon -->
         <svg viewBox="0 0 24 24"><path d="M3 5H21V7H3V5ZM3 17H21V19H3V17ZM8 10L5 13L8 16V10ZM16 10V16L19 13L16 10Z"/></svg>
       </div>
       <div class="badge" data-label="Owner" title="Owner">
-        <!-- Crown icon -->
         <svg viewBox="0 0 24 24"><path d="M4 17L2 7L6 13L10 7L14 13L18 7L22 17H4Z"/></svg>
       </div>
       <div class="badge" data-label="Booster" title="Booster">
-        <!-- Lightning bolt -->
         <svg viewBox="0 0 24 24"><path d="M7 2L3 14H12L9 22L17 10H8L11 2H7Z"/></svg>
       </div>
       <div class="badge" data-label="Premium" title="Premium">
-        <!-- Star -->
         <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.62L12 2L9.19 8.63L2 9.24L7.45 13.97L5.82 21L12 17.27Z"/></svg>
       </div>
       <div class="badge" data-label="Donater" title="Donater">
-        <!-- Heart -->
         <svg viewBox="0 0 24 24"><path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 6.42 3.42 5 5.5 5C6.74 5 7.91 5.81 8.44 7.09H15.56C16.09 5.81 17.26 5 18.5 5C20.58 5 22 6.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"/></svg>
       </div>
     </div>
@@ -250,6 +242,7 @@
   <script>
     const torScreen = document.getElementById('tor-screen');
     const profile = document.getElementById('profile-container');
+    const audio = document.getElementById('bg-music');
 
     torScreen.addEventListener('click', () => {
       torScreen.style.opacity = '0';
@@ -257,6 +250,12 @@
         torScreen.style.display = 'none';
         profile.style.opacity = '1';
         profile.style.pointerEvents = 'auto';
+
+        // Unmute and play audio on user interaction
+        audio.muted = false;
+        audio.play().catch(() => {
+          console.log('Audio playback prevented by browser.');
+        });
       }, 500);
     });
   </script>
