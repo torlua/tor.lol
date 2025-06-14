@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>@dada | Links</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
     html, body {
       height: 100%;
       background: black;
@@ -14,6 +16,8 @@
       overflow: hidden;
       text-shadow: 0 0 10px white;
     }
+
+    /* YouTube background video & music */
     .yt-bg, .yt-music {
       position: absolute;
       top: -50px;
@@ -45,6 +49,8 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.6; }
     }
+
+    /* Container */
     .container {
       z-index: 1;
       position: relative;
@@ -55,13 +61,19 @@
       align-items: center;
       text-align: center;
       gap: 20px;
+      opacity: 1;
+      transition: opacity 0.6s ease;
     }
+
+    /* Profile pic */
     .profile-pic {
       width: 120px;
       height: 120px;
       border-radius: 50%;
       border: 3px solid white;
     }
+
+    /* Name text effect */
     .name {
       font-size: 18px;
       white-space: nowrap;
@@ -77,6 +89,8 @@
     @keyframes blink {
       50% { border-color: transparent }
     }
+
+    /* Badges */
     .badges {
       display: flex;
       gap: 12px;
@@ -110,30 +124,78 @@
       opacity: 1;
       pointer-events: none;
       transition: opacity 0.2s ease;
+      z-index: 10;
     }
     .badge::after {
       opacity: 0;
     }
-    a {
-      display: block;
-      padding: 12px 24px;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      text-decoration: none;
-      border: 2px solid white;
-      border-radius: 8px;
-      margin: 6px;
-      width: fit-content;
-      text-shadow: 0 0 5px white;
-      transition: 0.3s;
+
+    /* Links as icons */
+    .links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
     }
-    a:hover {
-      background: white;
-      color: black;
+    .link-icon {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+    .link-icon img {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 3px white);
+    }
+    .link-icon:hover::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.85);
+      color: white;
+      padding: 4px 8px;
+      border: 1px solid white;
+      border-radius: 4px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 1;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 10;
+    }
+    .link-icon::after {
+      opacity: 0;
+    }
+
+    /* TOR Splash Screen */
+    #tor-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      color: white;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 64px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      z-index: 9999;
+      text-shadow: 0 0 15px white;
+      letter-spacing: 0.2em;
+      transition: opacity 0.5s ease;
     }
   </style>
 </head>
 <body>
+
+  <!-- TOR Splash Screen -->
+  <div id="tor-screen">TOR</div>
 
   <!-- Background YouTube Video -->
   <iframe class="yt-bg" src="https://www.youtube.com/embed/YOUR_BACKGROUND_VIDEO_ID?autoplay=1&mute=1&controls=0&loop=1&playlist=YOUR_BACKGROUND_VIDEO_ID&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen></iframe>
@@ -143,36 +205,56 @@
 
   <div class="vhs-overlay"></div>
 
-  <div class="container">
-    <!-- Change profile image URL here -->
-    <img class="profile-pic" src="https://your-image-url-here.jpg" alt="Profile Picture">
-    
+  <div class="container" id="profile-container" style="opacity:0; pointer-events:none;">
+    <img class="profile-pic" src="https://your-image-url-here.jpg" alt="Profile Picture" />
     <div class="name">@dada</div>
 
     <div class="badges">
       <div class="badge" data-label="Bug Hunter">
-        <img src="https://cdn-icons-png.flaticon.com/512/854/854878.png" alt="Bug Hunter">
+        <img src="https://cdn-icons-png.flaticon.com/512/854/854878.png" alt="Bug Hunter" />
       </div>
       <div class="badge" data-label="Developer">
-        <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Developer">
+        <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Developer" />
       </div>
       <div class="badge" data-label="Owner">
-        <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Owner">
+        <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Owner" />
       </div>
       <div class="badge" data-label="Booster">
-        <img src="https://cdn-icons-png.flaticon.com/512/565/565547.png" alt="Booster">
+        <img src="https://cdn-icons-png.flaticon.com/512/565/565547.png" alt="Booster" />
       </div>
       <div class="badge" data-label="Premium">
-        <img src="https://cdn-icons-png.flaticon.com/512/2583/2583346.png" alt="Premium">
+        <img src="https://cdn-icons-png.flaticon.com/512/2583/2583346.png" alt="Premium" />
       </div>
       <div class="badge" data-label="Donater">
-        <img src="https://cdn-icons-png.flaticon.com/512/929/929426.png" alt="Donater">
+        <img src="https://cdn-icons-png.flaticon.com/512/929/929426.png" alt="Donater" />
       </div>
     </div>
 
-    <a href="https://discord.gg/yourserver" target="_blank">My Discord Server</a>
-    <a href="https://www.roblox.com/games/yourgame" target="_blank">My Game on Roblox</a>
-    <a href="https://youtube.com/@yourchannel" target="_blank">My YouTube</a>
+    <div class="links">
+      <a class="link-icon" href="https://discord.gg/yourserver" target="_blank" data-label="Discord">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" />
+      </a>
+      <a class="link-icon" href="https://www.roblox.com/games/yourgame" target="_blank" data-label="Roblox">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968897.png" alt="Roblox" />
+      </a>
+      <a class="link-icon" href="https://youtube.com/@yourchannel" target="_blank" data-label="YouTube">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+      </a>
+    </div>
   </div>
+
+  <script>
+    const torScreen = document.getElementById('tor-screen');
+    const profile = document.getElementById('profile-container');
+
+    torScreen.addEventListener('click', () => {
+      torScreen.style.opacity = '0';
+      setTimeout(() => {
+        torScreen.style.display = 'none';
+        profile.style.opacity = '1';
+        profile.style.pointerEvents = 'auto';
+      }, 500);
+    });
+  </script>
 </body>
 </html>
